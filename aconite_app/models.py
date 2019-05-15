@@ -26,20 +26,12 @@ class Person(models.Model):
 class Genre(models.Model):
     ru_name = models.CharField(max_length=100)
     en_name = models.CharField(max_length=100)
+    is_prose = models.NullBooleanField(null=True, default=None)
 
     def __str__(self):
-        return "{} / {}".format(self.ru_name, self.en_name)
-
-
-class Category(models.Model):
-    is_prose = models.BooleanField()
-    genres = models.ManyToManyField(
-        Genre
-    )
-
-    def __str__(self):
-        return "{} {}".format(type(self.is_prose), self.is_prose)
-        # return "{}rosaic: {}".format({True: "P, False: "Non-p"}[self.is_prose], self.genre)
+        # return "{} / {}".format(self.ru_name, self.en_name)
+        # return "{} / {}; {} {}".format(self.ru_name, self.en_name, type(self.is_prose), self.is_prose)
+        return "{} / {}; {}rosaic".format(self.ru_name, self.en_name, {True: 'p', False: 'non-p'}[self.is_prose])
 
 
 class Content(models.Model):
@@ -87,8 +79,8 @@ class Work(Book):
     inspirations = models.ManyToManyField(
         Inspiration
     )
-    category = models.ForeignKey(
-        Category,
+    genre = models.ForeignKey(
+        Genre,
         on_delete=models.SET_NULL,
         null=True
     )
