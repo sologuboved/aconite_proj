@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
 import secret_data
-from aconite_app.models import *
 
 settings.configure(DATABASES={
                        'default': {
@@ -17,7 +16,14 @@ settings.configure(DATABASES={
                    INSTALLED_APPS=('aconite_app',))
 get_wsgi_application()
 
+from aconite_app.models import *
 
 
+def add_languages(*args):
+    for language in args:
+        Language(name=language).save()
+    print(Language.objects.all())
 
 
+if __name__ == '__main__':
+    add_languages('Ru', 'En')
