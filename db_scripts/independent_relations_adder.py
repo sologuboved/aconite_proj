@@ -33,19 +33,15 @@ def add_genres(*args):
 
 def add_is_prose():
     for genre in Genre.objects.all():
-        print(genre)
-        # if genre.en_name == 'fanfic':
-        #     genre.is_prose = True
-        # else:
-        #     genre.is_prose = False
-        # genre.save()
-
-
-def add_category():
-    pass
+        if genre.en_name == 'fanfic':
+            genre.is_prose = True
+        else:
+            genre.is_prose = False
+        genre.save()
 
 
 if __name__ == '__main__':
     # add_languages('Ru', 'En')
     # add_genres(('стихотворение', 'poem'), ('танка', 'tanka'), ('песня', 'song'), ('фанфик', 'fanfic'))
-    add_is_prose()
+    # add_is_prose()
+    pass
