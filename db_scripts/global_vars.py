@@ -1,0 +1,17 @@
+LJ_POEMS_JSON = 'lj_poems.json'
+DAY = "day"
+IS_DERIVATIVE = "is_derivative"
+IS_SONG = "is_song"
+IS_TANKA = "is_tanka"
+LANG = "lang"
+MONTH = "month"
+ORIGINAL_BY = "original_by"
+ORIGINAL_LANG = "original_lang"
+ORIGINAL_TITLE = "original_title"
+SOURCE = "source"
+TEXT = "text"
+TITLE = "title"
+WHERE = "where"
+YEAR = "year"
+INSPIRED_BY_AUTH = 'inspired_by_auth'
+INSPIRED_BY_TITLE = 'inspired_by_title'
