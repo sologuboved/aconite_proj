@@ -11,4 +11,5 @@ def add_fields(json_fname, default, *fieldnames):
 
 
 if __name__ == '__main__':
-    add_fields(LJ_POEMS_JSON, str(), INSPIRED_BY_AUTH, INSPIRED_BY_TITLE)
+    # add_fields(LJ_POEMS_JSON, str(), INSPIRED_BY_AUTH, INSPIRED_BY_TITLE)
+    pass
