@@ -57,3 +57,7 @@ def sweep_out(*fnames):
     print("Sweeping out {}...".format(", ".join(fnames)))
     for fname in fnames:
         os.remove(fname)
+
+
+def nonefy(fieldcontent):
+    return {str(): None}.get(fieldcontent, fieldcontent)
