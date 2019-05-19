@@ -13,7 +13,9 @@ def check():
     for poem in load_utf_json(LJ_POEMS_JSON):
         # if (poem[INSPIRED_BY_AUTH] or poem[INSPIRED_BY_TITLE]) and not poem[IS_DERIVATIVE]:
         #     print(poem)
-        if (poem[TRANSL_FROM_AUTH] or poem[TRANSL_FROM_TITLE]) and poem[IS_DERIVATIVE]:
+        # if (poem[TRANSL_FROM_AUTH] or poem[TRANSL_FROM_TITLE]) and poem[IS_DERIVATIVE]:
+        #     print(poem)
+        if sum(True if poem[fieldname] else False for fieldname in (TRANSL_FROM_AUTH, TRANSL_FROM_TITLE)) == 0:
             print(poem)
         # if poem[IS_DERIVATIVE]:
         #     print(poem[INSPIRED_BY_TITLE])
