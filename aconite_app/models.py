@@ -37,9 +37,6 @@ class Content(models.Model):
     title = models.CharField(max_length=3000)
     text = models.TextField()
     num_part = models.IntegerField()
-    languages = models.ManyToManyField(
-        Language
-    )
     work = models.ForeignKey(
         'Work',
         on_delete=models.CASCADE,
@@ -54,6 +51,9 @@ class Book(models.Model):
     title = models.CharField(max_length=3000)
     author = models.ManyToManyField(
         Person
+    )
+    languages = models.ManyToManyField(
+        Language
     )
 
     def __str__(self):
