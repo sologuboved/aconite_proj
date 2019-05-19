@@ -35,7 +35,6 @@ class Genre(models.Model):
 
 class Content(models.Model):
     title = models.CharField(max_length=3000)
-    original_title = models.CharField(max_length=3000, null=True)
     text = models.TextField()
     num_part = models.IntegerField()
     languages = models.ManyToManyField(
@@ -69,6 +68,7 @@ class Inspiration(Book):
 
 
 class Work(Book):
+    original_title = models.CharField(max_length=3000, null=True)
     day = models.IntegerField(null=True)
     month = models.IntegerField(null=True)
     year = models.IntegerField(null=True)
