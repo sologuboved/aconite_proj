@@ -18,7 +18,7 @@ def check():
         # if sum(True if poem[fieldname] else False for fieldname in (TRANSL_FROM_AUTH, TRANSL_FROM_TITLE)) == 0:
         #     print(poem)
         if poem[TRANSL_FROM_AUTH]:
-            print(poem[TRANSL_FROM_LANG], '-', poem[TRANSL_FROM_AUTH])
+            print(poem[TRANSL_FROM_LANG], '-', poem[TRANSL_FROM_TITLE])
         # if poem[IS_DERIVATIVE]:
         #     print(poem[INSPIRED_BY_TITLE])
         # if poem[ORIGINAL_BY]:
