@@ -51,5 +51,5 @@ if __name__ == '__main__':
     # add_languages('Ru', 'En')
     # add_genres(('стихотворение', 'poem'), ('танка', 'tanka'), ('песня', 'song'), ('фанфик', 'fanfic'))
     # add_is_prose()
-    edit_languages()
+    # edit_languages()
     pass
