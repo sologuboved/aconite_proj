@@ -40,8 +40,16 @@ def add_is_prose():
         genre.save()
 
 
+def edit_languages():
+    for language in Language.objects.all():
+        language.name = language.name.lower()
+        language.save()
+    print(Language.objects.all())
+
+
 if __name__ == '__main__':
     # add_languages('Ru', 'En')
     # add_genres(('стихотворение', 'poem'), ('танка', 'tanka'), ('песня', 'song'), ('фанфик', 'fanfic'))
     # add_is_prose()
+    edit_languages()
     pass
