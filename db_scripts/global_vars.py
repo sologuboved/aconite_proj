@@ -17,3 +17,5 @@ YEAR = "year"
 INSPIRED_BY_AUTH = 'inspired_by_auth'
 INSPIRED_BY_TITLE = 'inspired_by_title'
 IS_TRANSLATION = 'is_translation'
+RU_NAME = 'ru_name'
+EN_NAME = 'en_name'

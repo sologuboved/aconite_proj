@@ -34,7 +34,7 @@ class Genre(models.Model):
 
 
 class Content(models.Model):
-    title = models.CharField(max_length=3000)
+    title = models.CharField(max_length=3000, null=True)
     text = models.TextField()
     num_part = models.IntegerField()
     work = models.ForeignKey(
