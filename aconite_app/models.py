@@ -17,10 +17,11 @@ class Location(models.Model):
 
 
 class Person(models.Model):
-    name = models.CharField(max_length=250)
+    ru_name = models.CharField(max_length=250, null=True)
+    en_name = models.CharField(max_length=250, null=True)
 
     def __str__(self):
-        return self.name
+        return "{} / {}".format(self.ru_name, self.en_name)
 
 
 class Genre(models.Model):
@@ -29,21 +30,14 @@ class Genre(models.Model):
     is_prose = models.NullBooleanField(null=True, default=None)
 
     def __str__(self):
-        # return "{} / {}".format(self.ru_name, self.en_name)
-        # return "{} / {}; {} {}".format(self.ru_name, self.en_name, type(self.is_prose), self.is_prose)
         return "{} / {}; {}rosaic".format(self.ru_name, self.en_name, {True: 'p', False: 'non-p'}[self.is_prose])
 
 
 class Content(models.Model):
     title = models.CharField(max_length=3000)
+    original_title = models.CharField(max_length=3000, null=True)
     text = models.TextField()
     num_part = models.IntegerField()
-    day = models.IntegerField()
-    month = models.IntegerField()
-    year = models.IntegerField()
-    locations = models.ManyToManyField(
-        Location
-    )
     languages = models.ManyToManyField(
         Language
     )
@@ -75,6 +69,12 @@ class Inspiration(Book):
 
 
 class Work(Book):
+    day = models.IntegerField(null=True)
+    month = models.IntegerField(null=True)
+    year = models.IntegerField(null=True)
+    locations = models.ManyToManyField(
+        Location
+    )
     is_translation = models.BooleanField()
     inspirations = models.ManyToManyField(
         Inspiration
