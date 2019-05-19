@@ -49,7 +49,7 @@ class Content(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=3000)
-    author = models.ManyToManyField(
+    authors = models.ManyToManyField(
         Person
     )
     languages = models.ManyToManyField(
@@ -57,14 +57,14 @@ class Book(models.Model):
     )
 
     def __str__(self):
-        return "{} - {}".format(self.author, self.title)
+        return "{} - {}".format(self.authors, self.title)
 
 
 class Inspiration(Book):
     # works: reverse relation to Work
 
     def __str__(self):
-        return "{} - {}".format(self.author, self.title)
+        return "{} - {}".format(self.authors, self.title)
 
 
 class Work(Book):
@@ -87,4 +87,4 @@ class Work(Book):
     # contents: reverse relation to Content
 
     def __str__(self):
-        return "{} - {}".format(self.author, self.title)
+        return "{} - {}".format(self.authors, self.title)
