@@ -10,7 +10,8 @@ class SomeClass:
 
 
 def check():
-    locs = set()
+    # locs = set()
+    years = set()
     for poem in load_utf_json(LJ_POEMS_JSON):
         # if (poem[INSPIRED_BY_AUTH] or poem[INSPIRED_BY_TITLE]) and not poem[IS_DERIVATIVE]:
         #     print(poem)
@@ -25,11 +26,15 @@ def check():
         # if poem[ORIGINAL_BY]:
         #     print(poem[ORIGINAL_TITLE])
         # print(get_title(poem))
-        if poem[WHERE]:
-            ru_name, en_name = get_location(poem[WHERE])
-            locs.add(" | ".join([ru_name, en_name]))
-    for loc in locs:
-        print(loc)
+        # if poem[WHERE]:
+        #     ru_name, en_name = get_location(poem[WHERE])
+        #     locs.add(" | ".join([ru_name, en_name]))
+        years.add(poem[YEAR])
+
+    # for loc in locs:
+    #     print(loc)
+    for year in years:
+        print(year)
 
 
 if __name__ == '__main__':
