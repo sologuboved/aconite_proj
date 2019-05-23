@@ -34,7 +34,8 @@ class Genre(models.Model):
 
 
 class Content(models.Model):
-    title = models.CharField(max_length=3000, null=True)
+    title = models.CharField(max_length=1000, null=True)
+    dedication = models.CharField(max_length=1000, null=True)
     text = models.TextField()
     num_part = models.IntegerField()
     work = models.ForeignKey(
@@ -48,7 +49,7 @@ class Content(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=3000)
+    title = models.CharField(max_length=1000)
     authors = models.ManyToManyField(
         Person
     )
@@ -68,10 +69,12 @@ class Inspiration(Book):
 
 
 class Work(Book):
-    original_title = models.CharField(max_length=3000, null=True)
-    day = models.IntegerField(null=True)
-    month = models.IntegerField(null=True)
+    original_title = models.CharField(max_length=1000, null=True)
+    dedication = models.CharField(max_length=1000, null=True)
+    year_demo = models.CharField(max_length=250, null=True)
     year = models.IntegerField(null=True)
+    month = models.IntegerField(null=True)
+    day = models.IntegerField(null=True)
     locations = models.ManyToManyField(
         Location
     )
