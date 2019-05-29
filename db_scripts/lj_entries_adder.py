@@ -27,14 +27,12 @@ class Poem:
         self._poem = poem
         self._is_translation = self.is_translation()
         self._work = None
-        self._content = None
 
     def add_to_db(self):
         self.create_core()
         self.add_author()
         self.add_genre()
         self.add_location()
-        self.add_genre()
         self.add_content()
         if self._is_translation:
             self.add_original()
@@ -116,7 +114,8 @@ class Poem:
 
 
 def create_entry(relation, fields):
-    return relation.objects.get_or_create(**fields)
+    entry = relation.objects.get_or_create(**fields)
+    return entry[0]
 
 
 def get_title(poem):
@@ -159,5 +158,4 @@ def add_lj_entries(json_fname):
 
 
 if __name__ == '__main__':
-    # add_lj_entries('lj_poems.json')
-    pass
+    add_lj_entries('lj_poems.json')
