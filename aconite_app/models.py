@@ -17,8 +17,8 @@ class Location(models.Model):
 
 
 class Person(models.Model):
-    ru_name = models.CharField(max_length=250, null=True)
-    en_name = models.CharField(max_length=250, null=True)
+    ru_name = models.CharField(max_length=250, null=True, blank=True)
+    en_name = models.CharField(max_length=250, null=True, blank=True)
 
     def __str__(self):
         return "{} / {}".format(self.ru_name, self.en_name)
@@ -27,21 +27,22 @@ class Person(models.Model):
 class Genre(models.Model):
     ru_name = models.CharField(max_length=100)
     en_name = models.CharField(max_length=100)
-    is_prose = models.NullBooleanField(null=True, default=None)
+    is_prose = models.NullBooleanField(null=True, blank=True, default=None)
 
     def __str__(self):
         return "{} / {}; {}rosaic".format(self.ru_name, self.en_name, {True: 'p', False: 'non-p'}[self.is_prose])
 
 
 class Content(models.Model):
-    title = models.CharField(max_length=1000, null=True)
-    dedication = models.CharField(max_length=1000, null=True)
+    title = models.CharField(max_length=1000, null=True, blank=True)
+    dedication = models.CharField(max_length=1000, null=True, blank=True)
     text = models.TextField()
     num_part = models.IntegerField()
     work = models.ForeignKey(
         'Work',
         on_delete=models.CASCADE,
-        null=True
+        null=True,
+        blank=True
     )
 
     def __str__(self):
@@ -69,12 +70,12 @@ class Inspiration(Book):
 
 
 class Work(Book):
-    original_title = models.CharField(max_length=1000, null=True)
-    dedication = models.CharField(max_length=1000, null=True)
-    year_demo = models.CharField(max_length=250, null=True)
-    year = models.IntegerField(null=True)
-    month = models.IntegerField(null=True)
-    day = models.IntegerField(null=True)
+    original_title = models.CharField(max_length=1000, null=True, blank=True)
+    dedication = models.CharField(max_length=1000, null=True, blank=True)
+    year_demo = models.CharField(max_length=250, null=True, blank=True)
+    year = models.IntegerField(null=True, blank=True)
+    month = models.IntegerField(null=True, blank=True)
+    day = models.IntegerField(null=True, blank=True)
     locations = models.ManyToManyField(
         Location
     )
@@ -85,7 +86,8 @@ class Work(Book):
     genre = models.ForeignKey(
         Genre,
         on_delete=models.SET_NULL,
-        null=True
+        null=True,
+        blank=True
     )
     # contents: reverse relation to Content
 
